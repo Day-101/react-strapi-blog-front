@@ -1,0 +1,35 @@
+a{
+  text-decoration: none;
+}
+
+nav{
+  padding: 20px 0;
+}
+
+.postImg{
+  margin-top: 50px;
+}
+
+.MuiButton-containedPrimary svg{
+  padding-right: 10px;
+}
+
+form div{
+  margin-top: 10px;
+}
+
+nav{
+  display: flex;
+  justify-content: space-around;
+
+  a,span{
+    padding: 20px;
+    background-color: #ccc;
+    color: #000;
+
+    &:hover{
+      background-color: #eee;
+      cursor: pointer;
+    }
+  }
+}
