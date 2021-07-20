@@ -1,12 +1,12 @@
-import React,{useState} from 'react';
+import React, {useState} from 'react';
+import { useHistory } from 'react-router-dom';
 import postsAPI from '../services/postsAPI';
 import {TextField, Button} from '@material-ui/core';
 
 const AdminPosts = () => {
-  
+  const history = useHistory()
   const [credentials, setCredentials] = useState({
     title: "",
-    image: "",
     content: ""
   });
 
@@ -16,12 +16,14 @@ const AdminPosts = () => {
       ...credentials,
       [name]: value
     })
+    console.log(credentials)
   };
-
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
     try{
       await postsAPI.create(credentials);
+      history.replace("");
     }catch(error){
       console.log(error)
     }
@@ -38,14 +40,8 @@ const AdminPosts = () => {
           onChange={handleChange}
         />
       </div>
-      <div>
-        <TextField
-          id="image"
-          label="image"
-          type="text"
-          name="image"
-          onChange={handleChange}
-        />
+      <div className="V_center">
+
       </div>
       <div>
         <TextField

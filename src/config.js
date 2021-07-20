@@ -3,5 +3,6 @@ const API_URL_POSTS = "http://localhost:1337/posts"
 const API_URL_COMMENTS = "http://localhost:1337/comments"
 const API_URL_REGISTER = "http://localhost:1337/auth/local/register"
 const API_URL_LOGIN = "http://localhost:1337/auth/local"
+const API_URL_FILES_UPLOAD = "http://localhost:1337/upload"
 
-export { API_URL, API_URL_POSTS, API_URL_COMMENTS, API_URL_REGISTER, API_URL_LOGIN };
+export { API_URL, API_URL_POSTS, API_URL_COMMENTS, API_URL_REGISTER, API_URL_LOGIN, API_URL_FILES_UPLOAD };

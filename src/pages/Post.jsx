@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link,useHistory } from 'react-router-dom';
+import { useParams, Link, useHistory } from 'react-router-dom';
 import { API_URL } from '../config';
 import PostsAPI from '../services/postsAPI';
 // import CommentsAPI from '../services/commentsAPI';
@@ -27,13 +27,14 @@ const Post = () => {
     const post = await PostsAPI.findOne(id);
     setPost(post);
     setIsLoading(true);
+    console.log(post)
   };
 
   const handleDelete = async (event) => {
     event.preventDefault();
     try{
       await PostsAPI.deletePost(id);
-      history.replace("admin");
+      history.replace("");
     }catch(error){
       console.log(error);
     }
@@ -51,9 +52,8 @@ const Post = () => {
   useEffect(() => {
     fetchPost();
     fetchComments();
-    console.log('Hello !')
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [] ); // fuite mémoire avec "comments" en deuxième argument
+  }, [] );
 
   return (
     <div>
@@ -99,7 +99,6 @@ const Post = () => {
         </Grid>
         <Grid item md={6}>
           <List>
-            {console.log(comments)}
             {comments && comments.map(comment => (
               <ListItem alignItems="flex-start" key={comment.id}>
                 <ListItemAvatar>

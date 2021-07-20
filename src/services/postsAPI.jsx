@@ -36,7 +36,6 @@ const getComments = async (id) => {
 };
 
 const deletePost = (id) => {
-
   return fetch(`${API_URL_POSTS}/${id}`,
   {
     method: 'DELETE',
@@ -46,18 +45,29 @@ const deletePost = (id) => {
   });
 };
 
-
 const create = async (post) => {
-
   const response = await fetch(API_URL_POSTS,
-  {
-    method: "POST",
-    headers: {
-      'Authorization': `Bearer ${authToken}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(post)
-  })
+    {
+      method: "POST",
+      headers: {
+        'Authorization': `Bearer ${authToken}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(post)
+    })
+  return await response.json();
+};
+  
+const upload = async (image) => { //revoir ça
+  const response = await fetch(API_URL_POSTS,
+    {
+      method: "POST",
+      headers: {
+        'Authorization': `Bearer ${authToken}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(image)
+    })
   return await response.json();
 };
 
@@ -67,5 +77,6 @@ export default {
   findOne,
   getComments,
   create,
+  upload,
   deletePost
 };

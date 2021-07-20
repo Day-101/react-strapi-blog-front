@@ -11,3 +11,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.file-upload-container{
+  display: flex;
+  margin: 50px 0;
+}
+
+.V_Center{
+  flex: 1;
+  align-self: center;
+}
+
+.FileUpload{
+  border: 1px solid #eee;
+  border-radius: 2px;
+  max-width: 300px;
+  margin: auto;
+  padding: 12px 24px;
+}
+
+.Progress,
+.Progress_Seek{
+  height: 3px;
+}
+.Progress{
+  background: #eee;
+  margin: 24px;
+}
+.Progress_Seek{
+  background: green;
+}

@@ -5,15 +5,14 @@ import CommentsAPI from '../../services/commentsAPI';
 
 const FormComment = (props) => {
 
-  const [comment, setComment] = useState({});
+  const [writeComment, setWriteComment] = useState({});
 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try{
-      const data = CommentsAPI.create(comment);
-      console.log(data);
-      setComment("");
+      await CommentsAPI.create(writeComment);
+      setWriteComment("");
       props.fetchComments();
     } catch (error) {
       console.log(error)
@@ -22,13 +21,13 @@ const FormComment = (props) => {
 
   const handleChange = ({currentTarget}) => {
     const {name, value} = currentTarget;
-    setComment({
-      ...comment,
+    setWriteComment({
+      ...writeComment,
       post: props.id,
       [name]: value,
     })
   };
-
+  
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -37,7 +36,7 @@ const FormComment = (props) => {
           label="Pseudo"
           type="text"
           onChange={handleChange}
-          value={comment.pseudo || ""}
+          value={writeComment.pseudo || ""}
           />
       </div>
       <div>
@@ -49,7 +48,7 @@ const FormComment = (props) => {
         rows={4}
         variant="outlined"
         onChange={handleChange}
-        value={comment.content || ""}
+        value={writeComment.content || ""}
         />
       </div>
       <div>
