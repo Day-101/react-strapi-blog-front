@@ -21,7 +21,7 @@ export default class FileUpload extends React.Component{
   }
 
   handleChange = (event) => {
-    // console.log("FileUpload.handleChange event.target.files", event.target.files);
+    console.log("FileUpload.handleChange event.target.files", event.target.files);
     this.setState({file: event.target.files[0], submitted: false})
   };
   

@@ -7,6 +7,7 @@ const AdminPosts = () => {
   const history = useHistory()
   const [credentials, setCredentials] = useState({
     title: "",
+    image: null,
     content: ""
   });
 
@@ -14,11 +15,13 @@ const AdminPosts = () => {
     const {value, name} = currentTarget;
     setCredentials({
       ...credentials,
-      [name]: value
+      [name]: value,
+      image: currentTarget.files // ne fonctionne pas
     })
+    console.log({file: currentTarget.files})
     console.log(credentials)
   };
-  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try{
@@ -40,8 +43,8 @@ const AdminPosts = () => {
           onChange={handleChange}
         />
       </div>
-      <div className="V_center">
-
+      <div className="FileUpload">
+        <input onChange={handleChange} type="file" />
       </div>
       <div>
         <TextField

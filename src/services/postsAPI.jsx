@@ -1,6 +1,7 @@
 import { API_URL_POSTS } from '../config';
+import Cookies from 'js-cookie'
 
-const authToken = localStorage.getItem('authToken');
+const authToken = Cookies.get('authToken');
 
 const findAll = async () => {
   const response = await fetch(API_URL_POSTS,
@@ -58,25 +59,11 @@ const create = async (post) => {
   return await response.json();
 };
   
-const upload = async (image) => { //revoir ça
-  const response = await fetch(API_URL_POSTS,
-    {
-      method: "POST",
-      headers: {
-        'Authorization': `Bearer ${authToken}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(image)
-    })
-  return await response.json();
-};
-
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   findAll,
   findOne,
   getComments,
   create,
-  upload,
   deletePost
 };
