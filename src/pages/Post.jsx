@@ -27,7 +27,7 @@ const Post = () => {
     const post = await PostsAPI.findOne(id);
     setPost(post);
     setIsLoading(true);
-    console.log(post)
+    // console.log(post)
   };
 
   const handleDelete = async (event) => {

@@ -22,6 +22,7 @@ const useStyles = makeStyles({
 });
 
 const CardPost = ({post}) => {
+  console.log(post)
   
   const classes = useStyles();
 

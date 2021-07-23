@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import { API_URL_FILES_UPLOAD } from '../config';
+import { API_URL_UPLOAD_FILES } from '../config';
 
 /**
  * Return percent of value / total
@@ -33,7 +33,7 @@ export default class FileUpload extends React.Component{
     data.append('files', this.state.file);
     const upload_res = await axios({
       method: 'POST',
-      url: API_URL_FILES_UPLOAD,
+      url: API_URL_UPLOAD_FILES,
       data,
       onUploadProgress: (progress) => this.setState({percent: calculatePercent(progress.loaded, progress.total)}) //rapport avec axios
     })

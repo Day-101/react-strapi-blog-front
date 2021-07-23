@@ -2,9 +2,12 @@ import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import postsAPI from '../services/postsAPI';
 import {TextField, Button} from '@material-ui/core';
+import FileUpload from 'components/FileUpload';
+import AllFiles from 'components/AllFiles';
 
 const AdminPosts = () => {
   const history = useHistory()
+
   const [credentials, setCredentials] = useState({
     title: "",
     image: null,
@@ -16,10 +19,9 @@ const AdminPosts = () => {
     setCredentials({
       ...credentials,
       [name]: value,
-      image: currentTarget.files // ne fonctionne pas
     })
-    console.log({file: currentTarget.files})
-    console.log(credentials)
+    // récupérer la donnée 'file' pour l'insérer dans credentials
+    // console.log(credentials)
   };
 
   const handleSubmit = async (event) => {
@@ -33,36 +35,37 @@ const AdminPosts = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <TextField
-          id="title"
-          label="title"
-          type="text"
-          name="title"
-          onChange={handleChange}
-        />
-      </div>
-      <div className="FileUpload">
-        <input onChange={handleChange} type="file" />
-      </div>
-      <div>
-        <TextField
-          name="content"
-          id="content"
-          label="Multiline"
-          multiline
-          rows={4}
-          variant="outlined"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <Button variant="contained" color="primary" type="submit">
-          <span>Send</span>
-        </Button>
-      </div>
-    </form>
+    <>
+      <FileUpload />
+      <AllFiles />
+      <form onSubmit={handleSubmit}>
+        <div>
+          <TextField
+            id="title"
+            label="title"
+            type="text"
+            name="title"
+            onChange={handleChange}
+            />
+        </div>
+        <div>
+          <TextField
+            name="content"
+            id="content"
+            label="Multiline"
+            multiline
+            rows={4}
+            variant="outlined"
+            onChange={handleChange}
+            />
+        </div>
+        <div>
+          <Button variant="contained" color="primary" type="submit">
+            <span>Send</span>
+          </Button>
+        </div>
+      </form>
+    </>
   );
 };
 
