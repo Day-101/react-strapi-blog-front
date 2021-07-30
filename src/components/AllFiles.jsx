@@ -20,9 +20,15 @@ const AllFiles = () => {
 
   return (
     <div className="all-images-container">
-      {isLoading ? (
-        <PostsContentLoader />
-        ) : files.slice(0).reverse().map(file => <CardFile file={file} key={file.id} />)}
+      {isLoading ?
+        (
+          <PostsContentLoader />
+        )
+        :
+          files.slice(0).reverse().map(
+            file =>
+            <CardFile file={file} key={file.id} />
+          )}
     </div>
   );
 };

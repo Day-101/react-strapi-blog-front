@@ -3,10 +3,9 @@ import CardPost from '../components/Card/CardPost';
 import PostsContentLoader from '../components/Loaders/PostsContentLoader'
 import PostsAPI from '../services/postsAPI';
 import { Grid } from '@material-ui/core';
+import SimpleAccordion from 'components/Accordion/SimpleAccordion';
 
-import FileUpload from '../components/FileUpload';
-
-const Posts = () => {
+const Index = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [posts, setPosts] = useState(null)
 
@@ -21,22 +20,16 @@ const Posts = () => {
   };
 
   return (
-    <>
-      <div className="file-upload-container">
-        <div className="V-Center">
-          <FileUpload />
-        </div>
-      </div>
-      <div className="posts">
-        <h1>List Posts</h1>
-        <Grid container spacing={3}>
-          {isLoading ? (
-            <PostsContentLoader />
-            ) : posts.map(post => <CardPost post={post} key={post.id} />)}
-        </Grid>
-      </div>
-    </>
+    <div className="posts">
+      <SimpleAccordion />
+      <Grid>
+        {isLoading ?
+          <PostsContentLoader /> 
+          : posts.map(post => <CardPost post={post} key={post.id} />
+        )}
+      </Grid>
+    </div>
   );
 };
 
-export default Posts;
+export default Index;

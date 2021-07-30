@@ -4,6 +4,7 @@ import postsAPI from '../services/postsAPI';
 import {TextField, Button} from '@material-ui/core';
 import FileUpload from 'components/FileUpload';
 import AllFiles from 'components/AllFiles';
+import Cookies from 'js-cookie'
 
 const AdminPosts = () => {
   const history = useHistory()
@@ -16,14 +17,16 @@ const AdminPosts = () => {
 
   const handleChange = ({currentTarget}) => {
     const {value, name} = currentTarget;
+    const test = Cookies.get("fileSelected")
     setCredentials({
       ...credentials,
       [name]: value,
+      image: JSON.parse(test)
     })
     // récupérer la donnée 'file' pour l'insérer dans credentials
     // console.log(credentials)
   };
-
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
     try{
@@ -33,9 +36,10 @@ const AdminPosts = () => {
       console.log(error)
     }
   };
-
+  
   return (
     <>
+      {/* {console.log(Cookies.get("fileSelected"))} */}
       <FileUpload />
       <AllFiles />
       <form onSubmit={handleSubmit}>

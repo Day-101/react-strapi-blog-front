@@ -10,7 +10,7 @@ const authenticate = (crendentials) => {
     console.log("User ID ",data.user.id)
     Cookies.set("authToken", data.jwt);
     Cookies.set("username", data.user.username);
-    axios.defaults.headers["Authaurization"] = "Bearer " + data.jwt;
+    axios.defaults.headers["Authorization"] = "Bearer " + data.jwt;
   })
 };
 
@@ -21,7 +21,7 @@ const authenticate = (crendentials) => {
 //     console.log(data)
 //     Cookies.set("authToken", data.jwt);
 //     Cookies.set("username", data.user.username);
-//     axios.defaults.headers["Authaurization"] = "Bearer " + data.jwt;
+//     axios.defaults.headers["Authorization"] = "Bearer " + data.jwt;
 //   })
 // };
 
