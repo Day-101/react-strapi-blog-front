@@ -3,12 +3,12 @@ import AuthContext from '../contexts/authContext';
 import {useHistory, Redirect, Route} from 'react-router-dom';
 
 const PrivateRoute = ({path, component}) => {
-  const {isAuthenticated} = useContext(AuthContext); 
+  const {isLogged} = useContext(AuthContext); 
   const {location} = useHistory();
 
-  if(isAuthenticated){
+  if(isLogged){
     return <Route path={path} component={component} />
-  }else if(!isAuthenticated && location.pathname === "/login"){
+  }else if(!isLogged && location.pathname === "/login"){
     return <Redirect to="/login" />
   }else {
     return <Redirect to="/" />

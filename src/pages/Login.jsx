@@ -10,7 +10,7 @@ const Login = () => {
     identifier: "",
     password: ""
   });
-  const {setIsAuthenticated} = useContext(AuthContext); 
+  const {setIsLogged} = useContext(AuthContext);
 
   const handleChange = ({currentTarget}) => {
     const {value, name} = currentTarget;
@@ -23,9 +23,9 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try{
-      await authAPI.authenticate(credentials);
-      setIsAuthenticated(true);
-      history.replace("admin");
+      await authAPI.login(credentials);
+      setIsLogged(true);
+      history.replace("");
     }catch(error){
       console.log(error);
     }
@@ -36,7 +36,7 @@ const Login = () => {
       <div>
         <TextField 
         id="identifier"
-        label="Username"
+        label="Email ou Pseudo"
         type="text"
         name="identifier"
         onChange={handleChange}
@@ -45,7 +45,7 @@ const Login = () => {
       <div>
         <TextField 
         id="password"
-        label="password"
+        label="Mot de passe"
         type="text"
         name="password"
         onChange={handleChange}
@@ -53,7 +53,7 @@ const Login = () => {
       </div>
       <div>
         <Button variant="contained" color="primary" type="submit">
-          Login
+          S'identifier
         </Button>
       </div>
     </form>

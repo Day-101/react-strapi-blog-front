@@ -43,7 +43,7 @@ const FormComment = (props) => {
       <TextField
         name="content"
         id="outlined-multiline-static"
-        label="Multiline"
+        label="Écrivez un commentaire"
         multiline
         rows={4}
         variant="outlined"
@@ -53,7 +53,7 @@ const FormComment = (props) => {
       </div>
       <div>
         <Button variant="contained" color="primary" type="submit">
-          <span>Send</span>
+          <span>Commenter</span>
         </Button>
       </div>
     </form>

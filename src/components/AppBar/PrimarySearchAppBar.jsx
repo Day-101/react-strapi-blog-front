@@ -109,19 +109,26 @@ export default function PrimarySearchAppBar() {
   };
 
   const menuId = 'primary-search-account-menu';
-  const {isAuthenticated, setIsAuthenticated} = useContext(AuthContext);
+  const {isLogged, setIsLogged} = useContext(AuthContext);
   const history = useHistory();
 
   const handleLogin = () => {
     history.replace('/login');
     handleMenuClose();
   };
+  
+  const handleRegister = () => {
+    history.replace('/register');
+    handleMenuClose();
+  };
+
   const handleLogout = () => {
     authAPI.logout();
-    setIsAuthenticated(false);
+    setIsLogged(false);
     history.replace('/')
     handleMenuClose();
   };
+
   const handleCreatePost = () => {
     history.replace('/admin');
     handleMenuClose();
@@ -137,18 +144,23 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      {!isAuthenticated && 
-        <MenuItem onClick={handleLogin}>
-          Se connecter
-        </MenuItem>
+      {!isLogged &&
+        <span>
+          <MenuItem onClick={handleLogin}>
+            Se connecter
+          </MenuItem>
+          <MenuItem onClick={handleRegister}>
+            S'inscrire
+          </MenuItem>
+        </span>
       }
-      {isAuthenticated &&
+      {isLogged &&
       <span>
-        <MenuItem onClick={handleLogout}>
-          Se déconnecter
-        </MenuItem>
         <MenuItem onClick={handleCreatePost}>
           Poster un article
+        </MenuItem>
+        <MenuItem onClick={handleLogout}>
+          Se déconnecter
         </MenuItem>
       </span>
       }

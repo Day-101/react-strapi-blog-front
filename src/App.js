@@ -6,22 +6,22 @@ import PrivateRoute from './components/PrivateRoute';
 import Index from './pages/Index';
 import Post from './pages/Post';
 import Login from './pages/Login';
+import Register from './pages/Register';
 import AdminPosts from './pages/AdminPosts';
 import authAPI from './services/authAPI';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(authAPI.isAuthenticated);
+  const [isLogged, setIsLogged] = useState(authAPI.isLogged);
 
   useEffect(() => {
-    authAPI.setup();
-    authAPI.isAuthenticated();
+    authAPI.isLogged();
   })
 
   return (
     <AuthContext.Provider
     value={{
-      isAuthenticated,
-      setIsAuthenticated
+      isLogged,
+      setIsLogged
     }}
     >
       <Router>
@@ -29,6 +29,7 @@ function App() {
         <Route path="/" exact component={Index}></Route>
         <Route path="/post/:id" component={Post}></Route>
         <Route path="/login" component={Login}></Route>
+        <Route path="/register" component={Register}></Route>
         <PrivateRoute path="/admin" component={AdminPosts} />
       </Router>
     </AuthContext.Provider>

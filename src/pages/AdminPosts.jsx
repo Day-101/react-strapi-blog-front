@@ -23,8 +23,6 @@ const AdminPosts = () => {
       [name]: value,
       image: JSON.parse(test)
     })
-    // récupérer la donnée 'file' pour l'insérer dans credentials
-    // console.log(credentials)
   };
   
   const handleSubmit = async (event) => {
