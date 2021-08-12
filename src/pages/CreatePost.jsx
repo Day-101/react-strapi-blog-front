@@ -44,8 +44,8 @@ const CreatePost = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try{
-      await postsAPI.create(credentials);
-      history.replace("");
+      const data = await postsAPI.create(credentials);
+      history.replace(`/post/${data.id}`);
     }catch(error){
       console.log(error)
     }
