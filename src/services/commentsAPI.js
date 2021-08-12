@@ -1,8 +1,9 @@
 import { API_URL_COMMENTS } from "../config";
+import Cookies from "js-cookie";
 
 const create = async (comment) => {
 
-  const authToken = localStorage.getItem('authToken');
+  const authToken = Cookies.get('authToken');
 
   const response = await fetch(API_URL_COMMENTS,
     {
