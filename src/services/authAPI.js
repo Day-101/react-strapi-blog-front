@@ -7,7 +7,7 @@ const login = (crendentials) => {
   return axios.post(API_URL_LOGIN, crendentials)
   .then(response => response.data)
   .then(data => {
-    console.log("User ID ",data.user.id)
+    // console.log("User ID ",data.user.id)
     Cookies.set("authToken", data.jwt);
     Cookies.set("username", data.user.username);
     axios.defaults.headers["Authorization"] = "Bearer " + data.jwt;
@@ -38,5 +38,4 @@ export default {
   login,
   isLogged,
   logout,
-  // setup,
 };

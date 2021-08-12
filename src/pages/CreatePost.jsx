@@ -1,20 +1,36 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 import postsAPI from '../services/postsAPI';
+import usersAPI from '../services/usersAPI';
 import {TextField, Button} from '@material-ui/core';
 import FileUpload from 'components/FileUpload';
 import AllFiles from 'components/AllFiles';
 import Cookies from 'js-cookie'
 
-const AdminPosts = () => {
+const CreatePost = () => {
   const history = useHistory()
 
   const [credentials, setCredentials] = useState({
     title: "",
     image: null,
-    content: ""
+    content: "",
+    users_permissions_user: null
   });
-
+  console.log(credentials)
+  
+  const fetchAllMe = async () => {
+    const data = await usersAPI.fetchUsersMe();
+    setCredentials({
+      ...credentials,
+      users_permissions_user: data
+    })
+  };
+  
+  useEffect(() => {
+    fetchAllMe();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
+  
   const handleChange = ({currentTarget}) => {
     const {value, name} = currentTarget;
     const test = Cookies.get("fileSelected")
@@ -37,7 +53,6 @@ const AdminPosts = () => {
   
   return (
     <>
-      {/* {console.log(Cookies.get("fileSelected"))} */}
       <FileUpload />
       <AllFiles />
       <form onSubmit={handleSubmit}>
@@ -71,4 +86,4 @@ const AdminPosts = () => {
   );
 };
 
-export default AdminPosts;
+export default CreatePost;

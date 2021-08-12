@@ -13,8 +13,8 @@ const create = async (comment) => {
       },
       body: JSON.stringify(comment)
     })
-    return await response.json();
-  };
+  return await response.json();
+};
 
   
 const findAll = async () => {

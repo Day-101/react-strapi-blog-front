@@ -25,7 +25,7 @@ const useStyles = makeStyles({
 const CardPost = ({post}) => {
   
   const classes = useStyles();
-  console.log(post)
+  // console.log(post)
   return (
     // <Grid item>
       <Card className={classes.root}>

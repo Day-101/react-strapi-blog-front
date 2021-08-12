@@ -7,7 +7,7 @@ import Index from './pages/Index';
 import Post from './pages/Post';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import AdminPosts from './pages/AdminPosts';
+import CreatePost from './pages/CreatePost';
 import authAPI from './services/authAPI';
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
         <Route path="/post/:id" component={Post}></Route>
         <Route path="/login" component={Login}></Route>
         <Route path="/register" component={Register}></Route>
-        <PrivateRoute path="/admin" component={AdminPosts} />
+        <PrivateRoute path="/admin" component={CreatePost} />
       </Router>
     </AuthContext.Provider>
   );
